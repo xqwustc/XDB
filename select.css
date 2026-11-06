@@ -1,0 +1,33 @@
+:root select {
+  appearance:none;
+  max-width:100%;
+  padding-inline-end:38px;
+  border:1px solid #c7d9f2;
+  border-radius:12px;
+  background:#f4f8ff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 22 22'%3E%3Ccircle cx='11' cy='11' r='11' fill='%23e1ecff'/%3E%3Cpath d='m7.5 9.5 3.5 3.5 3.5-3.5' fill='none' stroke='%232563b8' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat right 8px center / 22px;
+}
+
+:root select:enabled {
+  cursor:pointer;
+}
+
+:root select:enabled:hover {
+  background-color:#eaf2ff;
+  border-color:#8aafe6;
+}
+
+:root select:focus-visible {
+  outline:2px solid #2563b8;
+  outline-offset:2px;
+}
+
+:root select:disabled {
+  opacity:.6;
+}
+
+@media (forced-colors:active) {
+  :root select {
+    appearance:auto;
+    background-image:none;
+  }
+}
