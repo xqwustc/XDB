@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>精炼更新 · 大模型知识精炼与持续学习</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Cpath d='M20 4 35 13 29 32 11 32 5 13Z' fill='%23ffffff' stroke='%232563b8' stroke-width='2'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="styles.css?v=20261012-light"><link rel="stylesheet" href="learning.css?v=20261023-scan-colors">
+  <script src="sample.js?v=20261023-dialogue-v2" defer></script><script src="model-history.js?v=20261023-integrated-v3" defer></script><script src="app.js?v=20261023-layer-masks-v4" defer></script>
+  <link rel="stylesheet" href="embed.css?v=20261023-integrated-v3"><script src="bridge.js?v=20261023-integrated-v3" defer></script>
+</head>
+<body>
+  <header class="topbar"><a class="brand" href="./index.html"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M20 4 35 13 29 32 11 32 5 13Z"/><path class="brand-fill" d="M20 10 30 16 23 28 13 25 11 15Z"/></svg><span>人机交互自主进化<span class="brand-sub">HUMAN–AI AUTONOMOUS EVOLUTION</span></span></a><div class="top-actions"><span class="demo-tag">交互演示 · 示例数据</span><button class="text-button" id="reset">重新演示</button><button class="icon-button" id="fullscreen" aria-label="全屏展示" title="全屏展示"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 3H3v5M16 3h5v5M3 16v5h5M21 16v5h-5"/></svg></button></div></header>
+  <div class="shell"><aside class="sidebar"><div class="project-label">课题三 <span>/</span> 精炼更新</div><div class="sidebar-title">知识更新工作台</div><nav class="step-navigation" id="navigation" aria-label="知识更新流程"></nav><div class="session-card"><span class="micro-label">当前学习对象</span><strong>Qwen2.5-7B-Instruct</strong><span id="session-source">等待传入专家对话</span><div class="session-domain">学习领域 <b>有机反应催化</b></div></div><div class="sidebar-foot"><span class="tiny-radar">◎</span><span>专家交互 → 知识精炼<br>参数定位 → 局部更新</span></div></aside>
+  <main><div class="page-heading"><div><div class="eyebrow">CONTINUAL LEARNING <span>/</span> 高效持续学习</div><h1>大模型知识精炼与更新系统</h1></div><span class="workspace-badge">科学基础</span></div><div class="stage-heading"><div><span class="stage-index" id="stage-index"></span><h2 id="stage-title" tabindex="-1"></h2><p id="stage-description"></p></div><span class="status-badge" id="stage-status"></span></div><section id="content" aria-labelledby="stage-title"></section><footer class="main-footer"><span>课题三 · 大模型知识精炼与高效持续学习</span><span>原始对话来自专家 JSONL；定位、训练与模型输出为模拟结果。</span></footer></main></div>
+  <dialog id="result-dialog" aria-labelledby="dialog-title"><div class="dialog-heading"><h2 id="dialog-title"></h2><button class="secondary-button" data-action="close-modal" aria-label="关闭弹窗">关闭 ×</button></div><div id="dialog-body"></div></dialog>
+  <div id="toast" role="status" hidden></div><div class="sr-only" id="live" role="status" aria-live="polite"></div><noscript>请启用 JavaScript 以使用演示系统。</noscript>
+</body></html>

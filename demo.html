@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="课题一精准诊断、课题二专家知识采集、课题三知识精炼与更新的统一演示系统。">
+  <title>人机交互自主进化 · 诊断、交互与知识更新</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23ffffff'/%3E%3Cpath d='M16 5 27 12 23 25 9 25 5 12Z' fill='none' stroke='%232563b8' stroke-width='2'/%3E%3Cpath d='M16 10 23 14 19 22 11 20 10 13Z' fill='%232563b8' fill-opacity='.5'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="styles.css?v=20261013-navigation">
+  <link rel="stylesheet" href="expert-demo.css?v=20261013-navigation">
+  <script src="app.js?v=20261020-history" defer></script>
+  <script src="expert-demo.js?v=20261013-navigation" defer></script>
+  <link rel="stylesheet" href="integration.css?v=20261013-navigation">
+  <script src="integration.js?v=20261023-topic3-sync" defer></script>
+  <link rel="stylesheet" href="history.css">
+  <script src="history.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="index.html" aria-label="返回人机交互自主进化主页"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M20 4 35 13 29 32 11 32 5 13Z"/><path class="brand-fill" d="M20 10 30 16 23 28 13 25 11 15Z"/></svg><span>人机交互自主进化<span class="brand-sub">HUMAN–AI AUTONOMOUS EVOLUTION</span></span></a>
+    <div class="top-actions"><span class="demo-tag">交互演示 · 示例数据</span><button class="text-button" id="reset-button" type="button">重新演示</button><button class="icon-button" id="fullscreen-button" type="button" aria-label="全屏展示" title="全屏展示"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 3H3v5M16 3h5v5M3 16v5h5M21 16v5h-5"/></svg></button></div>
+  </header>
+  <div class="shell">
+    <aside class="sidebar">
+      <div class="project-label">课题一 <span>/</span> 精准诊断</div>
+      <div class="sidebar-title">持续学习工作台</div>
+      <nav class="step-navigation" aria-label="三个课题的持续学习流程">
+        <div class="topic-label">课题一 · 精准诊断</div>
+        <button type="button" class="step active" data-step="0" aria-current="step"><span class="step-number">01</span><span><strong>模型与 Benchmark</strong><small>配置测评任务</small></span></button>
+        <button type="button" class="step" data-step="1" disabled><span class="step-number">02</span><span><strong>可信性审计</strong><small>污染检测 · 可信筛选</small></span></button>
+        <button type="button" class="step" data-step="2" disabled><span class="step-number">03</span><span><strong>自适应测评</strong><small>动态选题 · 能力收敛</small></span></button>
+        <button type="button" class="step" data-step="3" disabled><span class="step-number">04</span><span><strong>认知诊断</strong><small>能力画像 · 薄弱点定位</small></span></button>
+        <div class="topic-label">课题二 · 专家交互</div>
+        <button type="button" class="step" data-step="4" disabled><span class="step-number">05</span><span><strong>薄弱环节训练</strong><small>诊断驱动 · 定向训练</small></span></button>
+        <button type="button" class="step" data-step="5" disabled><span class="step-number">06</span><span><strong>模型自主提问</strong><small>专家知识 · Agent Memory</small></span></button>
+        <button type="button" class="step" data-step="6" disabled><span class="step-number">07</span><span><strong>专家知识收集</strong><small>结构化写入 · 记忆回流</small></span></button>
+        <button type="button" class="step" data-step="7" hidden disabled><span class="step-number">08</span><span><strong>维度扩展</strong><small>持续测评 · 能力演化</small></span></button>
+        <div class="topic-label">课题三 · 精炼更新</div>
+        <button class="step refinement-step" data-refinement="0" disabled><span class="step-number">08</span><span><strong>对话知识精炼</strong><small>事实提取 · 程序抽象</small></span></button>
+        <button class="step refinement-step" data-refinement="1" disabled><span class="step-number">09</span><span><strong>薄弱知识定位</strong><small>层级筛选 · 参数定位</small></span></button>
+        <button class="step refinement-step" data-refinement="2" disabled><span class="step-number">10</span><span><strong>知识更新与测试</strong><small>局部训练 · 测试保存</small></span></button>
+        <button class="step refinement-step" data-refinement="3" disabled><span class="step-number">11</span><span><strong>编辑版本管理</strong><small>历史快照 · 导出管理</small></span></button>
+      </nav>
+      <div class="session-card"><span class="micro-label">当前测评对象</span><strong id="session-model">等待载入模型</strong><span id="session-benchmark">尚未配置 Benchmark</span><div class="session-domain">测评领域 <b>科学基础</b></div></div>
+      <div class="sidebar-foot"><span class="tiny-radar">◎</span><span>可信题库 · 精准诊断<br>能力空间持续演化</span></div>
+    </aside>
+    <main id="main-content">
+      <div class="page-heading"><div><div class="eyebrow">DOMAIN-AWARE EVALUATION <span>/</span> 领域感知</div><h1>大模型自适应测评系统</h1></div><span class="workspace-badge">科学基础</span></div>
+      <div class="stage-heading"><div><span class="stage-index" id="stage-index">STEP 01 / 11</span><h2 id="stage-title" tabindex="-1">配置测评任务</h2><p id="stage-description">载入待测模型与题库，开启一次可信的能力诊断。</p></div><span class="status-badge" id="stage-status">等待配置</span></div>
+
+      <section class="view" data-view="0" aria-label="模型与 Benchmark 配置">
+        <div class="upload-grid">
+          <button class="upload-card" id="model-upload" type="button" aria-pressed="false"><span class="card-number">01 / MODEL</span><span class="upload-icon"><svg viewBox="0 0 48 48" aria-hidden="true"><rect x="12" y="12" width="24" height="24" rx="5"/><rect x="19" y="19" width="10" height="10" rx="2"/><path d="M18 5v7m12-7v7M18 36v7m12-7v7M5 18h7m-7 12h7m24-12h7m-7 12h7"/></svg></span><strong id="model-name">上传待测大模型</strong><span id="model-detail">点击载入示例模型</span><span class="upload-action" id="model-action">选择模型</span><span class="upload-meta">模型权重 / API 接口</span></button>
+          <button class="upload-card" id="benchmark-upload" type="button" aria-pressed="false"><span class="card-number">02 / BENCHMARK</span><span class="upload-icon"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M14 6h14l8 8v27H14Z"/><path d="M28 6v9h8M20 23h10M20 29h10M20 35h6"/></svg></span><strong id="benchmark-name">上传 Benchmark</strong><span id="benchmark-detail">点击载入示例题库</span><span class="upload-action" id="benchmark-action">选择 Benchmark</span><span class="upload-meta">JSON / JSONL · 多维能力题库</span></button>
+        </div>
+        <div class="configuration-bar"><label for="domain">测评领域<select id="domain"><option value="science">科学基础</option></select></label><div class="configuration-summary"><span class="micro-label">预设能力维度</span><span>数学 · 物理 · 化学 · 生命 · 材料 · 地学</span></div></div>
+        <div class="section-action"><p id="configuration-hint">请先载入模型与 Benchmark</p><button class="primary-button" id="start-button" type="button" disabled>开始测评</button></div>
+        <div class="flow-overview"><span class="micro-label">本次测评流程</span><div><span>可信性审计</span><i></i><span>自适应测评</span><i></i><span>认知诊断</span><i data-extension hidden></i><span data-extension hidden>维度扩展</span></div></div>
+        <section class="panel history-panel" aria-labelledby="history-title">
+          <div class="history-heading"><h3 id="history-title">历史测评结果</h3><span class="status-badge" id="history-count">3 条记录</span></div>
+          <p class="history-description">回看模型的能力画像与薄弱项。预置记录为示例，新完成的演示结果仅保存在当前浏览器。</p>
+          <div class="history-table-wrap"><table class="history-table" aria-label="历史测评结果列表">
+            <thead><tr><th scope="col">完成时间（北京时间）</th><th scope="col">模型 / Benchmark</th><th scope="col">综合能力</th><th scope="col">测评题量</th><th scope="col">主要薄弱项</th><th scope="col">操作</th></tr></thead>
+            <tbody id="history-rows"></tbody>
+          </table></div>
+          <p class="history-notice" id="history-notice" role="status"></p>
+        </section>
+      </section>
+
+      <section class="view" data-view="1" aria-label="Benchmark 可信性审计" hidden>
+        <div class="audit-pipeline panel"><div class="pipeline-node"><span class="micro-label">原始题库</span><div class="big-number">1,000<small>items</small></div><span>ScienceBench.jsonl</span><div class="sample-grid" id="raw-samples" aria-hidden="true"></div></div><div class="pipeline-connector"><span></span></div><div class="audit-core"><div class="audit-orbit" id="audit-orbit"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="m24 5 15 6v12c0 10-15 20-15 20S9 33 9 23V11Z"/><path d="m17 23 5 5 10-11"/></svg></div><strong>污染审计</strong><span>可信题库筛选</span></div><div class="pipeline-connector"><span></span></div><div class="pipeline-node"><span class="micro-label">可信题库</span><div class="big-number teal" id="clean-count">—<small>items</small></div><span>Clean Benchmark</span><div class="sample-grid" id="clean-samples" aria-hidden="true"></div></div></div>
+        <div class="metrics-grid"><div class="metric-card"><span>估计污染率</span><strong class="gold" id="contamination-rate">—</strong><small>Benchmark 污染风险估计</small></div><div class="metric-card"><span>95% 置信区间</span><strong id="audit-ci">—</strong><small>污染率估计的不确定性</small></div><div class="metric-card"><span>保留可信样本</span><strong class="teal" id="retained-count">—</strong><small id="retention-note">筛选后进入正式测评</small></div></div>
+        <div class="progress-panel panel"><div class="progress-heading"><strong id="audit-message">正在检查 Benchmark 污染风险…</strong><span class="mono" id="audit-percentage">0%</span></div><div class="progress-track" role="progressbar" id="audit-progress" aria-label="审计进度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div></div></div><div class="audit-checks"><span id="audit-check-0">样本载入</span><span id="audit-check-1">污染率估计</span><span id="audit-check-2">可信样本筛选</span></div></div>
+        <p class="footnote">污染率是风险估计；可信筛选另有阈值，因此排除比例不直接等于估计污染率。</p>
+      </section>
+
+      <section class="view" data-view="2" aria-label="自适应测评执行" hidden>
+        <div class="evaluation-grid"><div class="panel question-panel"><div class="panel-heading"><h3>自适应选题轨迹</h3><span class="micro-label">实时响应</span></div><div class="question-table-heading"><span>题目 / 能力维度</span><span>结果</span></div><ol id="question-list" class="question-list"></ol><div class="next-question"><span class="micro-label" id="next-question-label">下一道高信息量题目</span><strong id="next-question">正在选择…</strong></div></div><div class="panel convergence-panel"><div class="panel-heading"><h3>能力估计逐步收敛</h3><span class="chart-legend"><i></i>95% 置信区间</span></div><div class="live-metrics"><div><span>已测题量</span><strong><b id="tested-count">0</b><small> / 842</small></strong></div><div><span>当前能力估计</span><strong class="gold" id="ability-value">0.50</strong></div><div><span>95% 置信区间</span><strong class="interval-value" id="ability-ci">[0.12, 0.88]</strong></div></div><div class="convergence-chart" id="convergence-chart"></div><div class="evaluation-state" id="evaluation-state"><span class="running-dot"></span>根据当前能力状态，选择下一道最有信息量的题目</div></div></div>
+        <div class="efficiency-bar"><span>目标：用更少的题目，获得稳定的能力估计</span><strong id="efficiency-value">置信区间持续收窄</strong></div>
+      </section>
+
+      <section class="view" data-view="3" aria-label="认知诊断结果" hidden>
+        <div class="report-strip"><span class="report-label">测评完成</span><span>综合能力 <b>0.69</b></span><span>95% CI <b>[0.62, 0.76]</b></span><span>测评题量 <b>62 / 842</b></span><span>题量节省 <b class="teal">92.6%</b></span></div>
+        <div class="diagnosis-grid"><div class="panel radar-panel"><div class="panel-heading"><h3>多维能力画像</h3><span class="micro-label">6 个能力维度</span></div><div id="diagnosis-radar" class="radar-chart"></div><div class="radar-legend"><i></i>Qwen2.5-7B-Instruct<span>能力分数范围 0–1</span></div></div><div class="panel ranking-panel"><div class="panel-heading"><h3>能力诊断</h3><span class="micro-label">点击维度查看详情</span></div><div id="dimension-ranking"></div></div></div>
+        <div class="panel knowledge-panel"><div class="knowledge-heading"><div><span class="micro-label">学科级 / 模块级 / 知识点级</span><h3 id="knowledge-title">化学原理 <span>›</span> 化学平衡 <b>0.30</b></h3></div><span id="knowledge-badge" class="weak-tag">主要薄弱模块</span></div><div class="knowledge-items" id="knowledge-items"></div></div>
+        <div class="section-action"><p>根据诊断发现的薄弱知识点，进入定向训练。</p><button class="primary-button" id="weak-training-button" type="button">进入薄弱环节训练</button></div>
+        <div class="section-action" data-extension hidden><p>定位能力短板后，持续测评可进一步发现新的能力需求。</p><button type="button" class="primary-button" id="extension-button">探索维度扩展</button></div>
+      </section>
+
+      <section class="view" data-view="4" aria-label="薄弱环节训练" hidden>
+        <div class="panel expert-demo" id="expert-demo">
+          <div class="expert-content">
+            <p class="expert-note">延续认知诊断中的「有机反应中的催化剂使用」薄弱项，向专家求助「有机反应实验催化剂选择」这一策略性、程序性知识。数据集、训练进度与专家身份均为示例；填写的知识保留在当前页面，可导出保存。</p>
+            <ol class="expert-flow" aria-label="专家知识采集流程">
+              <li aria-current="step"><b>01</b> 诊断驱动选数据</li><li><b>02</b> 定向训练</li><li><b>03</b> 写入 Memory · 继续训练</li>
+            </ol>
+            <div class="expert-context"><span class="weak-tag">待加强</span><div><strong>化学原理 → 化学平衡 → 有机反应中的催化剂使用</strong><p>诊断输入：学科能力 0.36 · 模块能力 0.30。训练目标：学会根据底物、约束和证据选择催化体系。</p></div></div>
+
+            <section data-expert-stage="0" aria-label="模型选择训练数据集">
+              <div class="panel-heading"><h3>模型根据薄弱项匹配训练数据</h3><span class="micro-label">候选数据集 · 示例</span></div>
+              <div class="expert-datasets">
+                <article class="expert-dataset recommended"><span class="teal">模型推荐 · 高相关</span><h4>有机反应催化与条件案例集</h4><p>1,200 条 · 底物特征、催化体系、条件与实验结果</p><p>匹配依据：直接覆盖催化剂使用薄弱项，可学习条件与结果的关联。</p></article>
+                <article class="expert-dataset"><span class="micro-label">候选 · 补充事实知识</span><h4>催化剂性质知识集</h4><p>480 条 · 催化剂类别、性质与适用反应</p><p>可补充事实，但缺少「如何选择、何时切换」的决策过程。</p></article>
+                <article class="expert-dataset"><span class="micro-label">候选 · 相关性较低</span><h4>通用化学问答集</h4><p>3,000 条 · 基础概念与计算题</p><p>覆盖范围广，对当前催化策略缺口的帮助较少。</p></article>
+              </div>
+              <div class="section-action"><p>模型选择案例集进行定向训练；训练中继续检查程序性知识缺口。</p><button class="primary-button" id="expert-train-start" type="button">采用模型推荐并开始训练</button></div>
+              <div class="expert-training panel" id="weak-training-panel" hidden><div class="progress-heading"><strong id="weak-training-message">正在针对薄弱项学习催化与条件案例…</strong><span class="mono" id="weak-training-percent">0%</span></div><div class="progress-track" id="weak-training-progress" role="progressbar" aria-label="薄弱环节训练模拟进度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div></div></div><p class="expert-note">完成本轮训练后，自动进入「模型自主提问」进行专家协同训练。</p></div>
+            </section>
+
+            <section data-expert-stage="1" aria-label="训练中向专家寻求知识" hidden>
+              <div class="expert-training panel"><div class="progress-heading"><strong id="expert-training-message">正在学习有机反应催化与条件案例…</strong><span class="mono" id="expert-training-percent">0%</span></div><div class="progress-track" id="expert-training-progress" role="progressbar" aria-label="定向训练模拟进度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div></div></div><p class="expert-note">示例训练批次：催化体系选择。进度仅用于演示流程。</p></div>
+              <div id="expert-request" hidden>
+                <div class="section-action"><p>训练暂停于 32%，等待专家补充催化剂选择策略。</p><button class="primary-button" id="expert-answer-open" type="button">打开专家问答框</button></div>
+              </div>
+              <div class="expert-memory panel"><div class="panel-heading"><h3>Agent Memory</h3><span class="teal" id="expert-memory-count">0 条专家知识</span></div><p id="expert-memory-state">等待采集：专家回答将整理为可检索的记忆，用于后续训练。</p><article id="expert-memory-card" hidden><strong>催化剂选择策略</strong><p id="expert-memory-preview"></p><small>专家来源 · 适用边界 · 验证方法 · 原始对话</small></article></div>
+            </section>
+
+            <dialog class="expert-dialog" id="expert-dialog" aria-labelledby="expert-dialog-title">
+              <div class="panel-heading expert-dialog-heading"><div><span class="micro-label">训练进行中 · 32% · REQ-001</span><h3 id="expert-dialog-title">模型主动向专家寻求知识</h3></div><button class="secondary-button" id="expert-dialog-close" type="button">稍后回答</button></div>
+            <section data-expert-stage="2" aria-label="专家知识录入与多轮收集" hidden>
+              <article class="expert-message model"><span class="micro-label">当前求助 · REQ-001</span><p>针对带配位性杂环的芳基氯化物 Suzuki–Miyaura 偶联，请给出「有机反应实验催化剂选择」的判断顺序、依据、边界与验证方式。</p></article>
+              <form id="expert-answer-form" class="expert-form">
+                <div class="panel-heading"><h3>第一轮 · 采集专家决策知识</h3><button class="secondary-button" id="expert-fill-example" type="button">填入示例专家回答</button></div>
+                <div class="expert-form-grid">
+                  <label>专家标识<input name="expert" required maxlength="100" placeholder="例如：有机合成专家 A（示例）"></label>
+                  <label>知识来源<input name="source" required maxlength="300" placeholder="例如：文献依据、经验总结或示例说明"></label>
+                  <label>知识类型<select name="kind"><option value="procedural">策略性 / 程序性知识</option><option value="factual">事实性知识</option></select></label>
+                </div>
+                <label>知识内容：判断步骤与选择依据<textarea name="knowledge" required maxlength="6000" rows="6" placeholder="程序性知识请写明：先检查什么 → 在什么条件下如何选 → 为什么；事实性知识请写明命题与依据。"></textarea></label>
+                <label>适用条件与边界<textarea name="boundary" required maxlength="3000" rows="3" placeholder="说明适用反应、底物限制，以及哪些情况需要重新判断。"></textarea></label>
+                <label>验证方法<textarea name="verification" required maxlength="3000" rows="3" placeholder="如何用对照、文献与实验表征验证选择依据？"></textarea></label>
+                <div class="section-action"><p>提交后保留原始回答，并进入模型追问。</p><button class="primary-button" type="submit">收集回答并查看模型追问</button></div>
+              </form>
+              <div id="expert-followup" hidden>
+                <article class="expert-message human"><span class="micro-label">专家 → 模型 · 第一轮原始回答已收集</span><p id="expert-first-answer"></p></article>
+                <article class="expert-message model"><span class="micro-label">模型 → 专家 · 第二轮追问</span><p id="expert-followup-question"></p></article>
+                <form id="expert-followup-form" class="expert-form"><div class="panel-heading"><h3>第二轮 · 补充前提与失败处理</h3><button class="secondary-button" id="expert-fill-followup" type="button">填入示例补充</button></div><label>专家补充知识<textarea name="supplement" required maxlength="6000" rows="5" placeholder="回答模型追问，补全判断条件与可验证的证据。"></textarea></label><div class="section-action"><p>两轮对话共同形成一条带来源的知识样本。</p><button class="primary-button" type="submit">收集补充并生成样本草稿</button></div></form>
+              </div>
+            </section>
+              <div class="expert-memory-transfer" id="expert-memory-transfer" hidden role="status" aria-live="polite">
+                <h3>收集专家知识，写入 Agent Memory</h3>
+                <div class="expert-memory-route"><div class="expert-memory-source">专家回答<small>两轮对话 · 决策策略</small></div><div class="expert-memory-link"><span class="expert-memory-packet">知识样本</span></div><div class="expert-memory-target">Agent Memory<small id="expert-memory-write-count">0 → 1 条知识</small></div></div>
+                <ol class="expert-memory-log"><li>整理原始回答与适用边界</li><li>写入专家知识记忆</li><li>检索记忆，供后续训练使用</li></ol><p id="expert-memory-write-message">正在整理专家知识…</p>
+              </div>
+            </dialog>
+
+            <section data-expert-stage="3" aria-label="确认专家知识样本并回流训练" hidden>
+              <div class="panel-heading"><h3>专家知识采集结果</h3><span class="status-badge" id="expert-record-status">待专家确认</span></div>
+              <div class="expert-stats"><div><strong>2</strong><span>轮专家回答</span></div><div><strong>1</strong><span>条知识样本</span></div><div><strong id="expert-collected-count">0</strong><span>条已写入 Memory</span></div></div>
+              <div class="expert-record"><dl id="expert-record-fields"></dl><details><summary>查看完整结构化样本（包含原始对话）</summary><pre id="expert-record-json"></pre></details></div>
+              <div class="section-action"><p id="expert-confirm-note">请核对知识内容、来源与适用边界；确认后写入 Agent Memory。</p><div class="button-group"><button class="secondary-button" id="expert-edit-answer" type="button">修改专家回答</button><button class="primary-button" id="expert-confirm" type="button">确认并写入 Agent Memory</button></div></div>
+              <div id="expert-return" hidden><div class="expert-context"><span class="teal">知识已收集</span><div><strong>有机反应催化与条件案例集 + 专家补充知识集（1 条）</strong><p>新增样本包含：知识内容、决策依据、适用边界、验证方法、失败处理及两轮原始对话。</p></div></div><div class="section-action"><p id="expert-return-note">专家样本已经入集，可继续定向训练或导出 JSONL。</p><div class="button-group"><button class="secondary-button" id="expert-export" type="button">导出专家数据 JSONL</button><button class="primary-button" id="expert-resume" type="button">使用专家知识继续训练</button></div></div><div class="expert-training panel" id="expert-resume-panel" hidden><div class="progress-heading"><strong id="expert-resume-message">加入专家样本，继续训练…</strong><span class="mono" id="expert-resume-percent">32%</span></div><div class="progress-track" id="expert-resume-progress" role="progressbar" aria-label="专家知识回流训练模拟进度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="32"><div></div></div></div></div>
+            </section>
+            <div class="expert-bottom"><span id="expert-live" role="status" aria-live="polite">等待模型选择训练数据集</span><button class="text-button" id="expert-restart" type="button">重演知识采集</button></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="view" data-view="5" aria-label="模型自主提问" hidden></section>
+
+      <section class="view knowledge-collection-view" data-view="6" aria-label="专家知识收集" hidden>
+        <div class="collection-heading panel"><div><span class="micro-label">MODEL-IN-THE-LOOP · EXPERT KNOWLEDGE</span><h3>专家知识收集与 Agent Memory 写入</h3><p>把两轮专家对话拆解成可追踪、可验证、可检索的结构化记忆。</p></div><span class="status-badge done" id="collection-status">已写入 Memory</span></div>
+        <div class="collection-context panel"><div class="collection-context-item"><span class="micro-label">触发薄弱项</span><strong>有机反应中的催化剂使用</strong><small>化学原理 0.36 · 化学平衡 0.30</small></div><div class="collection-context-arrow">→</div><div class="collection-context-item"><span class="micro-label">专家请求</span><strong>REQ-001 · 有机反应实验催化剂选择</strong><small>策略性 / 程序性知识</small></div><div class="collection-context-arrow">→</div><div class="collection-context-item memory-highlight"><span class="micro-label">记忆条目</span><strong>MEM-CATALYST-001</strong><small>可供后续训练检索</small></div></div>
+        <div class="collection-timeline" aria-label="专家知识结构化收集过程">
+          <article class="collection-step panel"><div class="collection-step-index">01</div><div><span class="micro-label">原始对话 · 保留溯源</span><h3>收集专家回答</h3><p>保留模型问题、专家第一轮回答、模型追问和专家补充，形成完整对话链。</p><div class="collection-dialogue"><span class="dialogue-model">模型：请说明催化剂选择的判断顺序与依据。</span><span class="dialogue-human">专家：先看底物配位性，再按官能团耐受性缩小候选，并用小规模对照验证。</span><span class="dialogue-model">模型：失败时如何区分配位抑制与碱/溶剂不匹配？</span><span class="dialogue-human">专家：保持底物不变，逐项替换配体和碱，记录证据后再切换体系。</span></div></div></article>
+          <article class="collection-step panel"><div class="collection-step-index">02</div><div><span class="micro-label">结构化抽取 · 字段映射</span><h3>拆分程序性知识</h3><div class="collection-fields"><span><b>触发条件</b>带配位性杂环的芳基氯化物</span><span><b>判断顺序</b>底物特征 → 约束 → 催化体系 → 对照实验</span><span><b>选择依据</b>配位耐受性、官能团耐受性、金属残留</span><span><b>失败处理</b>先做最小对照，再逐项切换配体、碱、温度</span></div></div></article>
+          <article class="collection-step panel"><div class="collection-step-index">03</div><div><span class="micro-label">质量校验 · 可验证性</span><h3>补齐边界与证据</h3><div class="collection-checks"><span class="collection-check done">✓ 来源：专家经验总结</span><span class="collection-check done">✓ 边界：芳基氯化物与配位性杂环</span><span class="collection-check done">✓ 验证：对照实验、LC-MS、NMR、金属残留</span><span class="collection-check done">✓ 失败处理：保留每次切换理由</span></div></div></article>
+          <article class="collection-step panel"><div class="collection-step-index">04</div><div><span class="micro-label">记忆编码 · 可检索对象</span><h3>生成 Agent Memory 条目</h3><pre class="collection-json" id="collection-memory-json">{
+  "memory_id": "MEM-CATALYST-001",
+  "type": "procedural_strategy",
+  "topic": "有机反应实验催化剂选择",
+  "source": "human_expert_dialogue",
+  "retrieval_tags": ["Suzuki-Miyaura", "配位性杂环", "催化剂选择"],
+  "status": "ready_for_training"
+}</pre></div></article>
+          <article class="collection-step panel collection-write-step"><div class="collection-step-index">05</div><div><span class="micro-label">回流训练 · 使用新知识</span><h3>写入并检索 Agent Memory</h3><div class="collection-memory-progress"><div class="collection-memory-node">专家知识样本</div><div class="collection-memory-line"><i></i></div><div class="collection-memory-node active">Agent Memory<br><small>MEM-CATALYST-001</small></div><div class="collection-memory-line"><i></i></div><div class="collection-memory-node">后续训练批次</div></div><p id="collection-memory-note">已完成写入；下一批催化剂选择任务会优先检索该条策略。</p></div></article>
+        </div>
+        <div class="section-action"><p>专家知识已整理完毕，下一步使用催化剂示例对话进行知识精炼与更新。</p><div class="button-group"><button class="secondary-button" id="collection-back-button" type="button">返回模型自主提问</button><button class="secondary-button" id="collection-export-button" type="button">导出结构化 JSONL</button><button class="primary-button" id="collection-refine-button" type="button">进入知识精炼 →</button></div></div>
+      </section>
+
+      <section class="view" data-view="7" aria-label="能力维度持续扩展" hidden>
+        <div class="expansion-grid"><div class="panel expansion-radar"><div class="panel-heading"><h3>原有能力空间</h3><span class="version-label">V1 · 6 维</span></div><div class="radar-chart" id="original-radar"></div></div><div class="expansion-bridge"><span>持续测评</span><svg viewBox="0 0 80 24" aria-hidden="true"><path d="M0 12h74m-9-8 9 8-9 8"/></svg><small>新任务出现</small></div><div class="panel expansion-radar expanded"><div class="panel-heading"><h3>扩展后的能力空间</h3><span class="version-label gold">V2 · 7 维</span></div><div class="radar-chart" id="expanded-radar"></div></div></div>
+        <div class="new-dimension-card"><div class="new-dimension-icon">＋</div><div><span class="micro-label">新增评测维度</span><h3>实验设计 <span class="new-tag">NEW</span></h3><p>发现现有能力体系无法充分解释的新型任务表现，新增「实验设计」维度。</p></div><div class="new-score"><span>能力估计</span><strong>0.52</strong></div></div>
+        <div class="section-action"><p>从固定能力画像，走向持续演化的测评体系。</p><div class="button-group"><button type="button" class="secondary-button" id="back-report-button">返回诊断</button><button type="button" class="primary-button" id="replay-button">再次演示</button></div></div>
+      </section>
+
+      <div class="playback-toolbar" id="playback-toolbar" hidden><span class="playback-label"><span class="running-dot"></span><span id="playback-label">流程自动演示中</span></span><div class="button-group"><label class="speed-label" for="speed-select">演示速度<select id="speed-select"><option value="1">1×</option><option value="2">2×</option></select></label><button class="secondary-button" id="pause-button" type="button">暂停演示</button></div></div>
+      <footer class="main-footer"><span>课题一 · 领域感知的大模型自适应测评</span><span>演示数据，不代表模型真实测评结果</span></footer>
+    </main>
+    <section id="refinement-workspace" aria-label="课题三 · 知识精炼与更新" hidden><iframe id="refinement-frame" title="课题三知识精炼与更新工作台" src="refinement/index.html?embedded=1&v=20261023-topic3-sync"></iframe></section>
+  </div>
+  <dialog class="history-dialog" id="history-dialog" aria-labelledby="history-dialog-title" aria-describedby="history-detail-meta">
+    <div class="history-dialog-header"><div><h3 id="history-dialog-title">历史测评结果</h3><p id="history-detail-meta"></p></div><form method="dialog"><button class="secondary-button" type="submit" autofocus>关闭详情</button></form></div>
+    <div id="history-detail-content"></div>
+    <p class="history-detail-note">结果仅用于演示，不代表模型真实能力。关闭详情可继续当前任务。</p>
+  </dialog>
+  <div class="sr-only" id="announcement" role="status" aria-live="polite"></div>
+  <noscript><p class="noscript-note">请启用浏览器 JavaScript 以运行交互演示。</p></noscript>
+</body>
+</html>

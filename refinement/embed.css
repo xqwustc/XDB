@@ -1,0 +1,8 @@
+/* The host owns navigation; use the current standalone workspace layout. */
+html.embedded .topbar,html.embedded .sidebar,html.embedded .page-heading{display:none}
+html.embedded .shell{display:block;min-height:100vh;max-width:none}
+html.embedded main{width:100%;margin:0;padding-top:12px}
+html.embedded #toast{top:10px}
+html.embedded .stage-heading{margin-top:0}
+html.embedded .main-footer{gap:10px}
+@media(max-width:850px){html.embedded main{padding:12px}}
